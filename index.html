@@ -3,7 +3,21 @@
 	<head></head>
     <body>
     
-    <link rel="import" href="/nav.html">
+    <div class="js-component" data-name="nav" data-ext="html"></div>
+    <div class="js-component" data-name="nav" data-ext="html"></div>
+
+    <script>
+        const components = document.querySelectorAll('.js-component')
+
+        const loadComponent = async c => {
+            const { name, ext } = c.dataset
+            const response = await fetch(`${name}.${ext}`)
+            const html = await response.text()
+            c.innerHTML = html
+        }
+
+        [...components].forEach(loadComponent)
+    </script>
     
     </body>
 </html>
