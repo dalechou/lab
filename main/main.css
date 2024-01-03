@@ -35,24 +35,24 @@
     h1 { font-family: "Vollkorn", sans-serif; }
     p { font-family: "Vollkorn", sans-serif; }
 
-    body { padding: 1% 2% 0% 1%; color: #89c9b8; background-color: #092532; }
+    body { padding: 1% 2% 0% 1%; color: #d9d6d4; background-color: #423e3b; }
     
-    a:link { text-decoration: none; color: #89c9b8; background-color: #092532; }
-    a:visited { text-decoration: none; color: #89c9b8; background-color: #092532; }
-    a:hover { text-decoration: none; color: #092532; background-color: #89c9b8; }
+    a:link { text-decoration: none; color: #d9d6d4; background-color: #423e3b; }
+    a:visited { text-decoration: none; color: #d9d6d4; background-color: #423e3b; }
+    a:hover { text-decoration: none; color: #423e3b; background-color: #d9d6d4; }
     
-    nav a:link { font-family: "Vollkorn", sans-serif; text-decoration: none; color: #c7e2b2; background-color: #092532; }
-    nav a:visited { font-family: "Vollkorn", sans-serif; text-decoration: none; color: #c7e2b2; background-color: #092532; }
-    nav a:hover { font-family: "Vollkorn", sans-serif; text-decoration: none; color: #092532; background-color: #89c9b8; }
+    nav a:link { font-family: "Vollkorn", sans-serif; text-decoration: none; color: #fecc85; background-color: #423e3b; }
+    nav a:visited { font-family: "Vollkorn", sans-serif; text-decoration: none; color: #fecc85; background-color: #423e3b; }
+    nav a:hover { font-family: "Vollkorn", sans-serif; text-decoration: none; color: #423e3b; background-color: #d9d6d4; }
     
     p span.url a:link { font-family: "Source Code Pro", monospace; font-size: 85%; line-height: 100%; }
     p span.url a:visited { font-family: "Source Code Pro", monospace; font-size: 85%; line-height: 100%; }
     p span.url a:hover { font-family: "Source Code Pro", monospace; font-size: 85%; line-height: 100%; }
     
-    p span.list a:link { font-family: "Vollkorn", sans-serif; font-size: 90%; line-height: 150%; }
-    p span.list a:visited { font-family: "Vollkorn", sans-serif; font-size: 90%; line-height: 150%; }
-    p span.list a:hover { font-family: "Vollkorn", sans-serif; font-size: 90%; line-height: 150%; }
+    p span.list a:link { font-family: "Vollkorn", sans-serif; line-height: 150%; }
+    p span.list a:visited { font-family: "Vollkorn", sans-serif; line-height: 150%; }
+    p span.list a:hover { font-family: "Vollkorn", sans-serif; line-height: 150%; }
     
-    p span.inherit a:link { text-decoration: none; color: #c7e2b2; background-color: #092532; }
-    p span.inherit a:visited { text-decoration: none; color: #c7e2b2; background-color: #092532; }
-    p span.inherit a:hover { text-decoration: none; color: #092532; background-color: #89c9b8; }
+    p span.inherit a:link { text-decoration: none; color: #fecc85; background-color: #423e3b; }
+    p span.inherit a:visited { text-decoration: none; color: #fecc85; background-color: #423e3b; }
+    p span.inherit a:hover { text-decoration: none; color: #423e3b; background-color: #d9d6d4; }
