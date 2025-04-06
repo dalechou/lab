@@ -3,6 +3,3 @@
 # Example: 'tw' for Taiwan, 'us' for United States, etc.
 
 realm=tw
-
-# The tierSlots setting specifies the valid item slots for counting tier pieces.
-tierSlots=chest,hands,head,legs,shoulder
