@@ -1,0 +1,5 @@
+# This file contains configuration settings for the Lazyraiders application.
+# The realm setting specifies the region for API requests.
+# Example: 'tw' for Taiwan, 'us' for United States, etc.
+
+realm=tw
