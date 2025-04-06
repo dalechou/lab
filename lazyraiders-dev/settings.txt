@@ -1,11 +1,8 @@
-# This file contains configuration settings for the Lazyraiders application.
-# The realm setting specifies the region for API requests.
-# Example: 'tw' for Taiwan, 'us' for United States, etc.
-
+# 
 realm=tw
 
-# The tierSlots setting specifies the valid item slots for counting tier pieces.
+#
 tierSlots=chest, hands, head, legs, shoulder
 
-# asdf
-mythic_level=9
+#
+keyThreshold=9

@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <h1>Lazyraiders - v1.2.0a</h1>
+    <h1>Lazyraiders - v1.2.0b</h1>
     <table>
         <thead>
             <tr>
@@ -30,6 +30,7 @@
                 const lines = settings.split('\n');
                 const realm = lines.find(line => line.startsWith('realm=')).split('=')[1].trim();
                 const tierSlots = lines.find(line => line.startsWith('tierSlots=')).split('=')[1].trim().split(',');
+                const keyThreshold = parseInt(lines.find(line => line.startsWith('keyThreshold=')).split('=')[1].trim(), 10);
 
                 fetch('players.txt')
                     .then(response => response.text())
@@ -64,8 +65,8 @@
                                         }
                                     });
 
-                                    // Count the number of keys done at mythic_level 9 or above
-                                    const keys9Plus = runs.filter(run => run.mythic_level >= 9).length;
+                                    // Count the number of keys done at or above the keyThreshold
+                                    const keysThresholdPlus = runs.filter(run => run.mythic_level >= keyThreshold).length;
 
                                     const run = runs[0] || null;
 
@@ -75,7 +76,7 @@
                                         key: run ? run.mythic_level : 'n/a',
                                         time: run ? new Date(run.completed_at).toISOString().split('T')[0] : 'n/a',
                                         tierPieces,
-                                        keys9Plus
+                                        keysThresholdPlus
                                     };
                                 })
                                 .catch(error => {
@@ -116,9 +117,9 @@
                                 tr.appendChild(timeTd);
 
                                 // Display keys 9+
-                                const keys9PlusTd = document.createElement('td');
-                                keys9PlusTd.textContent = result.keys9Plus;
-                                tr.appendChild(keys9PlusTd);
+                                const keysThresholdPlusTd = document.createElement('td');
+                                keysThresholdPlusTd.textContent = result.keysThresholdPlus;
+                                tr.appendChild(keysThresholdPlusTd);
 
                                 tbody.appendChild(tr);
                             });
