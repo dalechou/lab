@@ -5,4 +5,4 @@ realm=tw
 tierSlots=chest, hands, head, legs, shoulder
 
 #
-keyThreshold=9
+keyThreshold=11
