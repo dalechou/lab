@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <h1>Lazyraiders - v1.2.0</h1>
+    <h1>Lazyraiders - v1.2.0a</h1>
     <table>
         <thead>
             <tr>
@@ -16,6 +16,7 @@
                 <th>tier piece(s)</th>
                 <th>key</th>
                 <th>run date</th>
+                <th>keys 9+</th> <!-- New column header -->
             </tr>
         </thead>
         <tbody id="raiderio-data">
@@ -42,7 +43,7 @@
                             return fetch(url)
                                 .then(response => response.json())
                                 .then(json => {
-                                    const run = json.mythic_plus_weekly_highest_level_runs ? json.mythic_plus_weekly_highest_level_runs[0] : null;
+                                    const runs = json.mythic_plus_weekly_highest_level_runs || [];
                                     const gear = json.gear;
 
                                     // Check if gear is defined
@@ -63,12 +64,18 @@
                                         }
                                     });
 
+                                    // Count the number of keys done at mythic_level 9 or above
+                                    const keys9Plus = runs.filter(run => run.mythic_level >= 9).length;
+
+                                    const run = runs[0] || null;
+
                                     return {
                                         name,
                                         ilvl: gear && gear.item_level_equipped ? Math.round(gear.item_level_equipped) : null,
                                         key: run ? run.mythic_level : 'n/a',
                                         time: run ? new Date(run.completed_at).toISOString().split('T')[0] : 'n/a',
-                                        tierPieces
+                                        tierPieces,
+                                        keys9Plus
                                     };
                                 })
                                 .catch(error => {
@@ -107,6 +114,11 @@
                                 const timeTd = document.createElement('td');
                                 timeTd.textContent = result.time;
                                 tr.appendChild(timeTd);
+
+                                // Display keys 9+
+                                const keys9PlusTd = document.createElement('td');
+                                keys9PlusTd.textContent = result.keys9Plus;
+                                tr.appendChild(keys9PlusTd);
 
                                 tbody.appendChild(tr);
                             });

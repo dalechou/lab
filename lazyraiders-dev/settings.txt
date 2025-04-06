@@ -6,3 +6,6 @@ realm=tw
 
 # The tierSlots setting specifies the valid item slots for counting tier pieces.
 tierSlots=chest, hands, head, legs, shoulder
+
+# asdf
+mythic_level=9
