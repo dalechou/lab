@@ -15,7 +15,7 @@
                 <th>item level</th>
                 <th>tier piece(s)</th>
                 <th id="keys-threshold-header">keys 9+</th> <!-- Moved column header -->
-                <th>highest key</th> <!-- Updated column header -->
+                <th>highest key</th>
                 <th>run date</th>
             </tr>
         </thead>
@@ -28,7 +28,7 @@
             .then(response => response.text())
             .then(settings => {
                 const lines = settings.split('\n');
-                const realm = lines.find(line => line.startsWith('realm=')).split('=')[1].trim();
+                const region = lines.find(line => line.startsWith('region=')).split('=')[1].trim();
                 const tierSlots = lines.find(line => line.startsWith('tierSlots=')).split('=')[1].trim().split(/\s*,\s*/); // Handle spaces around commas
                 const keyThreshold = parseInt(lines.find(line => line.startsWith('keyThreshold=')).split('=')[1].trim(), 10);
 
@@ -42,7 +42,7 @@
                         console.log('Players:', players);
                         const promises = players.map(player => {
                             const [name, playerRealm] = player.split('-');
-                            const url = `https://raider.io/api/v1/characters/profile?region=${realm}&realm=${playerRealm}&name=${name}&fields=mythic_plus_weekly_highest_level_runs,gear`;
+                            const url = `https://raider.io/api/v1/characters/profile?region=${region}&realm=${playerRealm}&name=${name}&fields=mythic_plus_weekly_highest_level_runs,gear`;
 
                             return fetch(url)
                                 .then(response => response.json())

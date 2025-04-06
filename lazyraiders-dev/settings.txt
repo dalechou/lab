@@ -1,5 +1,5 @@
 # 
-realm=tw
+region=tw
 
 #
 tierSlots=chest, hands, head, legs, shoulder
