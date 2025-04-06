@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <h1>Lazyraiders - v1.2.0a</h1>
+    <h1>Lazyraiders - v1.2.0</h1>
     <table>
         <thead>
             <tr>
@@ -29,7 +29,7 @@
             .then(settings => {
                 const lines = settings.split('\n');
                 const realm = lines.find(line => line.startsWith('realm=')).split('=')[1].trim();
-                const tierSlots = lines.find(line => line.startsWith('tierSlots=')).split('=')[1].trim().split(',');
+                const tierSlots = lines.find(line => line.startsWith('tierSlots=')).split('=')[1].trim().split(/\s*,\s*/); // Handle spaces around commas
                 const keyThreshold = parseInt(lines.find(line => line.startsWith('keyThreshold=')).split('=')[1].trim(), 10);
 
                 // Update the column header based on keyThreshold
