@@ -7,14 +7,14 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <h1>Lazyraiders - v1.2.0</h1>
+    <h1>Lazyraiders - v1.2.0a</h1>
     <table>
         <thead>
             <tr>
                 <th>character</th>
                 <th>item level</th>
                 <th>tier piece(s)</th>
-                <th id="keys-threshold-header">keys 9+</th> <!-- Moved column header -->
+                <th id="keys-threshold-header">keys 10+</th>
                 <th>highest key</th>
                 <th>run date</th>
             </tr>
@@ -72,11 +72,12 @@
                                     const keysThresholdPlus = runs.filter(run => run.mythic_level >= keyThreshold).length;
 
                                     const run = runs[0] || null;
+                                    const highestKeyInfo = run ? `${run.mythic_level} (${run.dungeon.short_name})` : 'n/a';
 
                                     return {
                                         name,
                                         ilvl: gear && gear.item_level_equipped ? Math.round(gear.item_level_equipped) : null,
-                                        key: run ? run.mythic_level : 'n/a',
+                                        highestKey: highestKeyInfo,
                                         time: run ? new Date(run.completed_at).toISOString().split('T')[0] : 'n/a',
                                         tierPieces,
                                         keysThresholdPlus
@@ -116,9 +117,9 @@
                                 keysThresholdPlusTd.textContent = result.keysThresholdPlus;
                                 tr.appendChild(keysThresholdPlusTd);
 
-                                const keyTd = document.createElement('td');
-                                keyTd.textContent = result.key;
-                                tr.appendChild(keyTd);
+                                const highestKeyTd = document.createElement('td');
+                                highestKeyTd.textContent = result.highestKey;
+                                tr.appendChild(highestKeyTd);
 
                                 const timeTd = document.createElement('td');
                                 timeTd.textContent = result.time;
