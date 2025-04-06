@@ -14,8 +14,8 @@
                 <th>character</th>
                 <th>item level</th>
                 <th>tier piece(s)</th>
-                <th id="keys-threshold-header">keys 10+</th>
-                <th>highest key</th>
+                <th id="keys-threshold-header">keys 9+</th> <!-- Moved column header -->
+                <th>highest key</th> <!-- Updated column header -->
                 <th>run date</th>
             </tr>
         </thead>
@@ -72,7 +72,7 @@
                                     const keysThresholdPlus = runs.filter(run => run.mythic_level >= keyThreshold).length;
 
                                     const run = runs[0] || null;
-                                    const highestKeyInfo = run ? `${run.mythic_level} (${run.dungeon.short_name})` : 'n/a';
+                                    const highestKeyInfo = run ? `${run.mythic_level}` : 'n/a';
 
                                     return {
                                         name,
