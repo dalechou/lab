@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <h1>Lazyraiders - v1.2.0b</h1>
+    <h1>Lazyraiders - v1.2.0</h1>
     <table>
         <thead>
             <tr>
@@ -16,7 +16,7 @@
                 <th>tier piece(s)</th>
                 <th>key</th>
                 <th>run date</th>
-                <th>keys 9+</th> <!-- New column header -->
+                <th id="keys-threshold-header">keys 9+</th> <!-- Column header with ID -->
             </tr>
         </thead>
         <tbody id="raiderio-data">
@@ -31,6 +31,9 @@
                 const realm = lines.find(line => line.startsWith('realm=')).split('=')[1].trim();
                 const tierSlots = lines.find(line => line.startsWith('tierSlots=')).split('=')[1].trim().split(',');
                 const keyThreshold = parseInt(lines.find(line => line.startsWith('keyThreshold=')).split('=')[1].trim(), 10);
+
+                // Update the column header based on keyThreshold
+                document.getElementById('keys-threshold-header').textContent = `keys ${keyThreshold}+`;
 
                 fetch('players.txt')
                     .then(response => response.text())
@@ -116,7 +119,7 @@
                                 timeTd.textContent = result.time;
                                 tr.appendChild(timeTd);
 
-                                // Display keys 9+
+                                // Display keys above threshold
                                 const keysThresholdPlusTd = document.createElement('td');
                                 keysThresholdPlusTd.textContent = result.keysThresholdPlus;
                                 tr.appendChild(keysThresholdPlusTd);
