@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <h1>Lazyraiders - v1.1.1b</h1>
+    <h1>Lazyraiders - v1.1.1d</h1>
     <table>
         <thead>
             <tr>
@@ -26,7 +26,9 @@
         fetch('settings.txt')
             .then(response => response.text())
             .then(settings => {
-                const realm = settings.split('=')[1].trim();
+                const lines = settings.split('\n');
+                const realm = lines.find(line => line.startsWith('realm=')).split('=')[1].trim();
+                const tierSlots = lines.find(line => line.startsWith('tierSlots=')).split('=')[1].trim().split(',');
 
                 fetch('players.txt')
                     .then(response => response.text())
@@ -54,8 +56,7 @@
 
                                     // Count tier pieces from specific items
                                     const tierPieces = {};
-                                    const validItems = ['chest', 'hands', 'head', 'legs', 'shoulder'];
-                                    validItems.forEach(slot => {
+                                    tierSlots.forEach(slot => {
                                         if (gear.items && gear.items[slot] && gear.items[slot].tier && gear.items[slot].tier !== 999) {
                                             const item = gear.items[slot];
                                             tierPieces[item.tier] = (tierPieces[item.tier] || 0) + 1;
