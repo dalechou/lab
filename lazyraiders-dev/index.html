@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <h1>Lazyraiders - v1.1.1</h1>
+    <h1>Lazyraiders - v1.2.0</h1>
     <table>
         <thead>
             <tr>
@@ -16,7 +16,6 @@
                 <th>tier piece(s)</th>
                 <th>key</th>
                 <th>run date</th>
-                <th>keys 10+</th> <!-- New column header -->
             </tr>
         </thead>
         <tbody id="raiderio-data">
@@ -27,7 +26,9 @@
         fetch('settings.txt')
             .then(response => response.text())
             .then(settings => {
-                const realm = settings.split('=')[1].trim();
+                const lines = settings.split('\n');
+                const realm = lines.find(line => line.startsWith('realm=')).split('=')[1].trim();
+                const tierSlots = lines.find(line => line.startsWith('tierSlots=')).split('=')[1].trim().split(',');
 
                 fetch('players.txt')
                     .then(response => response.text())
@@ -41,7 +42,7 @@
                             return fetch(url)
                                 .then(response => response.json())
                                 .then(json => {
-                                    const runs = json.mythic_plus_weekly_highest_level_runs || [];
+                                    const run = json.mythic_plus_weekly_highest_level_runs ? json.mythic_plus_weekly_highest_level_runs[0] : null;
                                     const gear = json.gear;
 
                                     // Check if gear is defined
@@ -55,26 +56,19 @@
 
                                     // Count tier pieces from specific items
                                     const tierPieces = {};
-                                    const validItems = ['chest', 'hands', 'head', 'legs', 'shoulder'];
-                                    validItems.forEach(slot => {
+                                    tierSlots.forEach(slot => {
                                         if (gear.items && gear.items[slot] && gear.items[slot].tier && gear.items[slot].tier !== 999) {
                                             const item = gear.items[slot];
                                             tierPieces[item.tier] = (tierPieces[item.tier] || 0) + 1;
                                         }
                                     });
 
-                                    // Count the number of keys done at level 10 or above
-                                    const keys10Plus = runs.filter(run => run.mythic_level >= 10).length;
-
-                                    const run = runs[0] || null;
-
                                     return {
                                         name,
                                         ilvl: gear && gear.item_level_equipped ? Math.round(gear.item_level_equipped) : null,
                                         key: run ? run.mythic_level : 'n/a',
                                         time: run ? new Date(run.completed_at).toISOString().split('T')[0] : 'n/a',
-                                        tierPieces,
-                                        keys10Plus
+                                        tierPieces
                                     };
                                 })
                                 .catch(error => {
@@ -113,11 +107,6 @@
                                 const timeTd = document.createElement('td');
                                 timeTd.textContent = result.time;
                                 tr.appendChild(timeTd);
-
-                                // Display keys 10+
-                                const keys10PlusTd = document.createElement('td');
-                                keys10PlusTd.textContent = result.keys10Plus;
-                                tr.appendChild(keys10PlusTd);
 
                                 tbody.appendChild(tr);
                             });
