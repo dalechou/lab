@@ -14,9 +14,9 @@
                 <th>character</th>
                 <th>item level</th>
                 <th>tier piece(s)</th>
+                <th id="keys-threshold-header">keys 9+</th> <!-- Moved column header -->
                 <th>key</th>
                 <th>run date</th>
-                <th id="keys-threshold-header">keys 9+</th> <!-- Column header with ID -->
             </tr>
         </thead>
         <tbody id="raiderio-data">
@@ -111,6 +111,11 @@
                                 tierTd.textContent = tierText || 'n/a';
                                 tr.appendChild(tierTd);
 
+                                // Display keys above threshold
+                                const keysThresholdPlusTd = document.createElement('td');
+                                keysThresholdPlusTd.textContent = result.keysThresholdPlus;
+                                tr.appendChild(keysThresholdPlusTd);
+
                                 const keyTd = document.createElement('td');
                                 keyTd.textContent = result.key;
                                 tr.appendChild(keyTd);
@@ -118,11 +123,6 @@
                                 const timeTd = document.createElement('td');
                                 timeTd.textContent = result.time;
                                 tr.appendChild(timeTd);
-
-                                // Display keys above threshold
-                                const keysThresholdPlusTd = document.createElement('td');
-                                keysThresholdPlusTd.textContent = result.keysThresholdPlus;
-                                tr.appendChild(keysThresholdPlusTd);
 
                                 tbody.appendChild(tr);
                             });
