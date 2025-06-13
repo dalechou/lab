@@ -1,7 +1,5 @@
 const ideaFiles = [
-  'ideas/001.txt',
-  'ideas/002.txt',
-  'ideas/003.txt',
+  'ideas/asdf.txt',
   // Add more as needed
 ];
 
