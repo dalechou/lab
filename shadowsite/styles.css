@@ -142,4 +142,4 @@ article:lang(zh) { font-family: 'Cactus Classical Serif', serif; font-size: 100%
 
 /* Footer */
 
-footer { margin-top: auto; }
+footer { display: block; margin-top: auto; border-style: solid; }
