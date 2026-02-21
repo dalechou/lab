@@ -83,6 +83,7 @@ article:lang(zh) { font-family: 'Cactus Classical Serif', serif; font-size: 100%
 .portfolio-item {
     display: flex;
     flex-direction: column;
+    border-style: dotted;
 }
 .portfolio-item img {
     width: 100%;
