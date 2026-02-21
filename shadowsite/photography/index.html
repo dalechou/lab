@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Dale Chou's photography</title>
+    <link rel='stylesheet' href='../styles.css'>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js'></script>
+</head>
+<body>
+<header>
+<nav>
+    <div id='mainnav'></div>
+    <script>
+    $(function(){
+        $('#mainnav').load('nav.html');
+    });
+    </script>
+    <br>
+</nav>
+</header>
+
+<section class="portfolio-grid">
+    
+    <article class="portfolio-item">
+        <img src="./images/R0000937-a.jpg" alt="Brief description of photo 1">
+        <h2>Title or Name</h2>
+        <p>Caption or brief description</p>
+        <div class="portfolio-notes"></div>
+    </article>
+
+    <article class="portfolio-item">
+        <img src="./images/R0003589-a.jpg" alt="Brief description of photo 2">
+        <h2>Title or Name</h2>
+        <p>Caption or brief description</p>
+        <div class="portfolio-notes"></div>
+    </article>
+
+    <!-- Repeat for all 18 photos -->
+
+</section>
+
+</body>
+</html>

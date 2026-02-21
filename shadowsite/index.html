@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Dale's site</title>
+    <link href='./styles.css' rel='stylesheet'>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js'></script>
+</head>
+<body>
+<header>
+<nav>
+    <div id='mainnav'></div>
+    <script>
+    $(function(){
+        $('#mainnav').load('nav.html');
+    });
+    </script>
+    <br>
+</nav>
+</header>
+<!-- Keep width within 360 -->
+<img src='./dale.jpg' height='522' width='360' alt='Asian man with short hair and glasses'>
+<p>Photo by Choco. California, 2025.</p>
+<hr>
+<h1>Dale Chou <i style='font-size: 75%; font-weight: lighter;'>(he/him)</i></h1>
+<p>Gamer. Poet. Dad.</p>
+<p>Kindness is important.</p>
+<p>I work on <i>World of Warcraft</i>, my favourite game. I like video games and TTRPG, especially if I get to play with friends.</p>
+<p>I enjoy creative endeavours—<span class='inherit'><a href='./poetry/'>poetry</a></span>, stories, music, and more. I am learning to <span class='inherit'><a href='./painting/'>paint</a></span> these days.</p>
+<p>Cori is my world. She is an amazing person. We go to the beach every other week in summer, where we stack rocks and build sandcastles. We also play games and paint together.</p>
+<footer>
+<nav>
+    <a href='#'><span class='material-symbols-rounded'>vertical_align_top</span></a>
+</nav>
+</footer>
+</body>
+</html>
