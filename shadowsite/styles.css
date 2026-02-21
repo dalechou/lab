@@ -8,7 +8,7 @@
 /* Breakpoint: small screen */
 
 @media all and (max-width: 640px) { 
-    body { padding: 0% 2% 2% 1%; font-size: 130%; }    
+    body { padding: 0% 2% 2% 1%; font-size: 100%; }    
     nav { word-spacing: 16px; }
     nav img, img.nav { width: 24px; padding-left: 1%; padding-right: 1%; }
     .portfolio-grid { grid-template-columns: 1fr; }
@@ -17,7 +17,7 @@
 /* Breakpoint: medium screen */
 
 @media all and (min-width: 641px) and (max-width: 1007px) {
-    body { padding: 0% 5% 2% 5%; font-size: 130%; }
+    body { padding: 0% 5% 2% 5%; font-size: 100%; }
     nav { word-spacing: 20px; }
     nav img, img.nav { width: 25px; }
     .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
@@ -26,7 +26,7 @@
 /* Breakpoint: large screen */
 
 @media all and (min-width: 1008px) {   
-    body { padding: 0% 18% 2% 15%; font-size: 145%; }
+    body { padding: 0% 18% 2% 15%; font-size: 100%; }
     nav { word-spacing: 24px; }
     nav img, img.nav { width: 26px; }
     .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
@@ -65,7 +65,7 @@
     'opsz' 24;
 }
 
-body { min-height: 100vh; font-family: 'Zen Maru Gothic', sans-serif; line-height: 150%; }
+body { min-height: 100vh; font-family: 'Zen Maru Gothic', sans-serif; line-height: 100%; }
     
 nav { padding: 1% 0% 1% 0%; }
 
