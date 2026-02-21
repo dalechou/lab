@@ -70,7 +70,7 @@ body { min-height: 100vh; font-family: 'Zen Maru Gothic', sans-serif; line-heigh
 nav { padding: 1% 0% 1% 0%; }
 
 article { padding: 2% 0% 2% 0%; }
-article:lang(zh) { font-family: 'Cactus Classical Serif', serif; font-size: 85%; }
+article:lang(zh) { font-family: 'Cactus Classical Serif', serif; font-size: 100%; }
 
 h1 { font-size: 112%; font-weight: 700; }
 h1 span.dedication { font-size: 76%; padding: 0% 0% 0% 1%; font-weight: 400; }
