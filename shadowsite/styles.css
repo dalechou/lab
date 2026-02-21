@@ -72,17 +72,6 @@ nav { padding: 1% 0% 1% 0%; }
 article { padding: 2% 0% 2% 0%; }
 article:lang(zh) { font-family: 'Cactus Classical Serif', serif; font-size: 100%; }
 
-h1 { font-size: 112%; font-weight: 700; }
-h1 span.dedication { font-size: 76%; padding: 0% 0% 0% 1%; font-weight: 400; }
-
-pre { font-family: 'Source Code Pro', monospace; font-size: 85%; }
-pre span.part { font-size: 120%; }
-pre span.stamp { font-family: 'Zen Maru Gothic', sans-serif; font-size: 111%; }
-pre span.time { font-size: 86%; line-height: 74%; }
-       
-p span.url { font-family: 'Source Code Pro', monospace; font-size: 82%; }
-    
-p span.list { font-size: 93%; }
 
 /* Portfolio */
 
