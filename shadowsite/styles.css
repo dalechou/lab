@@ -102,7 +102,7 @@ p span.list { font-size: 93%; }
     cursor: pointer;
 }
 
-/*
+
 .lightbox {
     display: none;
     position: fixed;
@@ -151,7 +151,7 @@ p span.list { font-size: 93%; }
     align-items: center;
     justify-content: center;
 }
-*/
+
 /* Footer */
 
 footer { margin-top: auto; padding: 3% 0% 1% 0%; }
