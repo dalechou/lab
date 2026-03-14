@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Random Line Picker</title>
-    <link rel='stylesheet' href='../styles.css'>
+    <link rel='stylesheet' href='./styles.css'>
 </head>
 <body>
     <h1>Random Line Picker</h1>
     <p id="randomLine">Loading...</p>
-    <button onclick="fetchRandomLine()">Get Random Line</button>
 
     <script>
+        // Function to fetch a random line from lines.txt
         function fetchRandomLine() {
             fetch('lines.txt')
                 .then(response => response.text())
