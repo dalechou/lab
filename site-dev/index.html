@@ -1,49 +1,33 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
 <head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>Dale Chou's writing</title>
-    <link rel='stylesheet' href='./styles.css'>
-    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js'></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Line Picker</title>
+    <link rel='stylesheet' href='../styles.css'>
 </head>
 <body>
-<header>
-<nav>
-    <div id='mainnav'></div>
+    <h1>Random Line Picker</h1>
+    <p id="randomLine">Loading...</p>
+    <button onclick="fetchRandomLine()">Get Random Line</button>
+
     <script>
-    $(function(){
-        $('#mainnav').load('nav.html');
-    });
+        function fetchRandomLine() {
+            fetch('lines.txt')
+                .then(response => response.text())
+                .then(data => {
+                    const lines = data.split('\n');
+                    const randomIndex = Math.floor(Math.random() * lines.length);
+                    document.getElementById('randomLine').innerText = lines[randomIndex];
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('randomLine').innerText = 'Error loading file.';
+                });
+        }
+
+        // Automatically fetch a random line on page load
+        window.onload = fetchRandomLine;
     </script>
-    <br>
-</nav>
-</header>
-<p>Stories, articles, writings on paper napkins.</p>
-    <blockquote>
-    <p><span class='list'><i>
-    <a href='./a_hello.html'>Hello</a><br>
-    <a href='./a_attribution.html'>Attribution</a><br>
-    <a href='./a_pigeon_hole.html'>鴿子洞</a><br>
-    <a href='./a_prefekta.html'>Prefekta</a><br>
-    <a href='./a_history_of_distract.org.html'>History of distract.org</a><br>
-     </i></span></p>
-    </blockquote>
-
-<p>Microblog:</p>
-
-    <a class="mastodon-feed"
-        href="https://g0v.social/@dale"
-        data-toot-limit="20"
-        data-exclude-replies="true"
-        data-exclude-reblogs="true"
-    >follow me into the Fediverse</a>
-    <script type="module" src="https://esm.sh/emfed@1"></script>
-
-<footer>
-<nav>
-    <a href='#'><span class='material-symbols-rounded'>vertical_align_top</span></a>
-</nav>
-</footer>
 </body>
 </html>
