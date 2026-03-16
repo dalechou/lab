@@ -7,27 +7,47 @@
     <link rel='stylesheet' href='./styles.css'>
 </head>
 <body>
-    <h1>Random Line Picker</h1>
-    <p id="randomLine">Loading...</p>
 
-    <script>
-        // Function to fetch a random line from lines.txt
-        function fetchRandomLine() {
-            fetch('lines.txt')
-                .then(response => response.text())
-                .then(data => {
-                    const lines = data.split('\n');
+<script>
+    function fetchRandomLine() {
+        fetch('./now.txt')
+            .then(response => response.text())
+            .then(data => {
+                const lines = data.split('\n').filter(line => line.trim() !== '');
+                const numLines = Math.random() < 0.5 ? 2 : 3;
+                const randomLines = [];
+                const selectedIndices = new Set();
+                
+                while (selectedIndices.size < numLines) {
                     const randomIndex = Math.floor(Math.random() * lines.length);
-                    document.getElementById('randomLine').innerText = lines[randomIndex];
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    document.getElementById('randomLine').innerText = 'Error loading file.';
-                });
-        }
+                    if (!selectedIndices.has(randomIndex)) {
+                        selectedIndices.add(randomIndex);
+                        randomLines.push(lines[randomIndex]);
+                    }
+                }
+                
+                document.getElementById('randomLine').innerHTML = randomLines.map(line => `<p>${line}</p>`).join('');
+                fetch('./now.txt', { method: 'HEAD' })
+                    .then(response => {
+                        const lastModified = response.headers.get('last-modified');
+                        if (lastModified) {
+                            const date = new Date(lastModified);
+                            const day = date.toLocaleDateString('en-US', { timeZone: 'America/Los_Angeles', day: 'numeric' });
+                            const month = date.toLocaleDateString('en-US', { timeZone: 'America/Los_Angeles', month: 'long' });
+                            const year = date.toLocaleDateString('en-US', { timeZone: 'America/Los_Angeles', year: 'numeric' });
+                            document.getElementById('lastUpdate').innerHTML = `<p>Just a few things on my mind as of ${day} ${month} ${year}.</p>`;
+                        }
+                    })
+                    .catch(error => console.error('Temporal error:', error));
+            })
+            .catch(error => {
+                console.error('Material error:', error);
+                document.getElementById('randomLine').innerHTML = '<p>Looking into the cold dark... Nothing. There is nothing.</p>';
+            });
+    }
+    window.onload = fetchRandomLine;
+</script>
 
-        // Automatically fetch a random line on page load
-        window.onload = fetchRandomLine;
-    </script>
+
 </body>
 </html>
